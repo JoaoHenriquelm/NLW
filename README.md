@@ -16,4 +16,6 @@ Projeto construído do evento Next Level Week da Rocketseat.
 
 ## Aprendizado 🤯~
 
-- 
+- Animações básicas
+- Formas de display
+- Prática do conteúdo
