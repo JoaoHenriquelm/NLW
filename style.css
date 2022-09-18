@@ -1,0 +1,196 @@
+/* Importação de uma fonte */ 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
+
+/* Resetando configurações padrão do navegador */ 
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+/* Retirando a "bolinha" da lista, o seu estilo disk */
+ul {
+    list-style: none;
+}
+
+/* Colocando a imagem de fundo na página, colocando para começar no centro encima, possuindo toda a tela, sem repetir a imagem e o resto da página que a imagem não pega colocar uma cor */
+body {
+    background-image: url(assets/bg.jpg);
+    background-position: top center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-color: #121214;
+}
+
+/* Inserindo uma fonte e um espaço de altura da letra */
+body * {
+    font-family: 'Inter', sans-serif;
+    line-height: 160%;
+}
+
+/* Espaçamento do header do começo da página */
+header {
+    margin-top: 32px;
+    height: calc(120px + 32px);
+}
+
+/* Definido um tamanho da imagem e colocando no centro, adicionamos uma borda colorida arredondada, para isso colocamos um flex com padding de 4px para organizala no centro, além de uma animação de transição. */
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+
+    border-radius: 50%;
+
+    display: flex;
+    padding: 4px;
+
+    transition: transform .3s;
+}
+
+/* Aumenta a escala da div um pouco quando se passa o mouse encima */
+header div:hover {
+    transform: scale(1.1);
+}
+
+header img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+/* Colocar um tamanho máximo para o conteúdo dentro do main, quando a tela não tiver 580 pixels, o contéudo do main não vai invadir toda tela, ficando um espaço pra ficar bonitinho. margin no automatico para ficar no centro. 
+Além disso colocamos o display grid no main de um jeito onde fiquem em colunas com um vão de 24 pixels. E por fim demos um espaçamento de 32 pixels no top para dar espaço ao nosso futuro header */
+main {
+    max-width: 580px;
+    width: 90%;
+    margin: 32px auto;
+
+    display: grid;
+    gap: 24px;
+}
+
+/* Mudança da cor da letra para branco e um degradê de cor de fundo para dar a sombrinha estilosa na div. O padding dá o preenchimento extra e o border radius um arredondamento da borda */
+section {
+    color: white;
+
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    padding-top: 4px;
+    border-radius: 10px;
+}
+
+/* Colocamos uma cor de fundo na div e demos um preenchimento para melhor disposição do conteúdo na tela, além de um arredondamento de borda */
+section div {
+    background-color: #2A2634;
+    padding: 24px 32px 32px 32px;
+    border-radius: 8px;
+}
+
+/* espaço na letra */
+section h2 {
+    letter-spacing: -0.47px;
+}
+
+/* espaço na letra e mudança de cor */
+section p {
+    color: #A1A1AA;
+    letter-spacing: -0.18px;
+}
+
+/* Fizemos com que cada item da lista fique um do lado do outro e tenha um vão de 16 pixels, mas também quando tiver muitos itens vá um pra baixo do outro com o wrap. Além disso adicionamos um espaçamento com o margin, adicionando distancia do conteúdo do item da lista com o parágrafo e título  */
+section ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    
+    margin-top: 24px;
+
+}
+
+/* Animação de transição */
+section ul li {
+    transition: transform .3s;
+}
+
+/* Ao passar o mouse, haver uma escala no tamanho do conteúdo */
+section ul li:hover {
+    transform: scale(1.1);
+}
+
+/* Diminuição dos itens da lista e arredondamento das bordas */
+ul.games-list img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+/* Diminuição dos itens da lista e arredondamento das bordas */
+ul.channel-list img {
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid #443E54;
+}
+
+/* animation */
+
+/* Colocando animações:
+
+Colocamos a propriedade animation adicionando o nome da animação que criamos, depois adicionamos o primeiro valor que é o tempo até ela chegar até determinada condição da animação, o segundo valor o tempo que vai demorar para animação acontecer (delay). 
+
+Importante quando tiver delay colocarmos o backwards, para o conteúdo só aparecer depois da animação 
+*/
+header div {
+    animation: fromTop .8s 1s backwards;
+}
+
+/* Nessa animação foi usado o nth-child para identificar as section do main enumerando-as, assim colocando um delay para cada uma delas aparecer. */
+main section {
+    animation: fromBottom .7s backwards;
+}
+
+main section:nth-child(1) {
+    animation-delay: 0s;
+}
+
+main section:nth-child(2) {
+    animation-delay: .4s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .8s;
+}
+
+/* Como fazer animações: 
+
+1 - Definimos um nome para animação dentro de um @keyframe
+
+2 - Colocamos onde nossa animação começará (from ou porcentagens começando de 0%) e onde terminará (to ou porcentagens depois de 0%.
+
+3 - Dentro de onde começara e terminará colocamos propriedades como opacidade e transformar (tem que colocar onde aparecerá valores negativos para cima e positivos para baixo) 
+
+4 - Criado as animações vamos adiciona-las nas tags HTML acima :)
+*/
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
